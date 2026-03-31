@@ -1,10 +1,14 @@
 import prisma from "../../../prismaClient.js";
 
-export async function get(req, res) {
-    const { username, password } = req.query;
-
+export async function postt(req, res) {
     try {
-        const user = await prisma.user.findUnique({
+        const { username, password } = req.body; // Read from JSON body
+
+        if (!username || !password) {
+            return res.status(400).json({ message: "Username and password are required" });
+        }
+
+        const user = await prisma.user.findFirst({
             where: { username },
         });
 
