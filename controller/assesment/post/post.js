@@ -7,9 +7,8 @@ export async function post(req, res) {
     if (!symptom || !whenDidItStart || !painLevel || !typeOfPain || !doesItSpreadTo || !otherSymtoms) {
         return res.status(400).json({ message: "symptom, whenDidItStart, painLevel, typeOfPain, doesItSpreadTo, and otherSymtoms are required" });
     }
-
     try {
-        const newAssesment = await prisma.assesment.create({
+        const newAssesment = await prisma.Assestment.create({
             data: {
                 symptom: symptom.trim(),
                 whenDidItStart: whenDidItStart.trim(),
@@ -17,6 +16,7 @@ export async function post(req, res) {
                 typeOfPain: typeOfPain.trim(),
                 doesItSpreadTo: doesItSpreadTo.trim(),
                 otherSymtoms: otherSymtoms.trim(),
+                dateCreated: new Date().toISOString(),
             },
         });
             res.status(201).json({ message: "Assesment created successfully", assesment: newAssesment });
