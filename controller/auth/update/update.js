@@ -1,6 +1,6 @@
 import prisma from "../../../prismaClient.js";
 
-export default async function update(req, res) {
+export default async function   update(req, res) {
     const { username, password, name } = req.body;
 
     try {
