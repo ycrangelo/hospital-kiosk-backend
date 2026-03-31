@@ -1,4 +1,6 @@
 import authRoute from "./router/auth/authRoute.js";
+import appointmentRoute from "./router/appointment/appointmentRoute.js";
+import assesmentRoute from "./router/assesment/assesmentRoute.js";
 
 // index.js
 import express from "express";
@@ -19,9 +21,12 @@ app.get('/about', (req, res) => {
   res.send('This is a simple Express app.');
 });
 
-console.log("server: mounting /api/auth routes", typeof authRoute);
+console.log("server: mounting /api/auth routes", typeof authRoute);   
+console.log("server: mounting /api/appointment routes", typeof appointmentRoute);
+console.log("server: mounting /api/assesment routes", typeof assesmentRoute);
 app.use('/api/auth', authRoute)
-
+app.use('/api/appointment', appointmentRoute)
+app.use('/api/assesment', assesmentRoute)
 // Start server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
