@@ -4,7 +4,7 @@ export default async function update(req, res) {
     const { username, password, name } = req.body;
 
     try {
-        const user = await prisma.user.findUnique({
+        const user = await prisma.user.findFirst({
             where: { username },
         });
 
@@ -13,10 +13,10 @@ export default async function update(req, res) {
         }
 
         const updatedUser = await prisma.user.update({
-            where: { username },
+            where: { id: user.id }, // ✅ use unique field
             data: {
-                password,
-                name
+                password, // ideally hash this before storing
+                name,
             },
         });
 
