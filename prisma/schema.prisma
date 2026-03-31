@@ -47,3 +47,24 @@ model Assestment{
   otherSymtoms              String
   dateCreated               String
 }
+
+model Location {
+  id                        String   @id @default(auto()) @map("_id") @db.ObjectId
+  location                  String
+  map                       String
+  directions                String[]
+}
+
+model Doctorlist {
+    id                      String   @id @default(auto()) @map("_id") @db.ObjectId
+    doctorname              String
+    department              String
+    occupiedDate            String[]
+}
+model User{
+    id                      String   @id @default(auto()) @map("_id") @db.ObjectId
+    username                String
+    password                String
+    name                    String
+
+}
