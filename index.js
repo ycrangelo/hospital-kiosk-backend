@@ -2,10 +2,11 @@ import authRoute from "./router/auth/authRoute.js";
 import appointmentRoute from "./router/appointment/appointmentRoute.js";
 import assesmentRoute from "./router/assesment/assesmentRoute.js";
 import locationRoute from "./router/location/locationRoute.js";
-// index.js
+import doctorlistRoute from "./router/doctorlist/doctorlistRoute.js";
+
 import express from "express";
 const app = express();
-const PORT = 3000;
+const PORT = 3000;  
 
 // Middleware to parse JSON
 app.use(express.json());
@@ -25,11 +26,13 @@ console.log("server: mounting /api/auth routes", typeof authRoute);
 console.log("server: mounting /api/appointment routes", typeof appointmentRoute);
 console.log("server: mounting /api/assesment routes", typeof assesmentRoute);
 console.log("server: mounting /api/location routes", typeof locationRoute);
+console.log("server: mounting /api/doctorlist routes", typeof doctorlistRoute);
 
 app.use('/api/auth', authRoute)
 app.use('/api/appointment', appointmentRoute)
 app.use('/api/assesment', assesmentRoute)
 app.use('/api/location', locationRoute)
+app.use('/api/doctorlist', doctorlistRoute)
 // Start server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

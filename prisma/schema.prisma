@@ -60,7 +60,7 @@ model Doctorlist {
     id                      String   @id @default(auto()) @map("_id") @db.ObjectId
     doctorname              String
     department              String
-    occupiedDate            String[]
+    occupiedDate            String[]?
     dateCreated             DateTime @default(now())
 }
 model User{
