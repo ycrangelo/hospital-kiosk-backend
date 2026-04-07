@@ -3,6 +3,9 @@ import appointmentRoute from "./router/appointment/appointmentRoute.js";
 import assesmentRoute from "./router/assesment/assesmentRoute.js";
 import locationRoute from "./router/location/locationRoute.js";
 import doctorlistRoute from "./router/doctorlist/doctorlistRoute.js";
+import { uploadThingHandler } from "./uploadthing.js";
+import dotenv from "dotenv";
+
 
 import express from "express";
 const app = express();
@@ -28,6 +31,8 @@ console.log("server: mounting /api/assesment routes", typeof assesmentRoute);
 console.log("server: mounting /api/location routes", typeof locationRoute);
 console.log("server: mounting /api/doctorlist routes", typeof doctorlistRoute);
 
+// 🔥 Upload route
+app.use("/api/uploadthing", uploadThingHandler);
 app.use('/api/auth', authRoute)
 app.use('/api/appointment', appointmentRoute)
 app.use('/api/assesment', assesmentRoute)
